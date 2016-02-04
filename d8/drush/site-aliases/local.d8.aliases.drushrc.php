@@ -12,9 +12,9 @@ $sites = [
 foreach ($sites as $alias => $uri) {
   $aliases[$alias] = [
     'uri' => $uri,
-    'root' => '/var/www/shila-dev/code/shila-drupal/d8/web',
+    'root' => '/var/www/shila-prod/code/shila-drupal/d8/web',
     'path-aliases' => [
-      '%dump-dir' => '/var/www/shila-dev/data/drupal-sql-dumps',
+      '%dump-dir' => '/var/www/shila-prod/data/sql-dumps',
     ],
   ];
 }
