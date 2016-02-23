@@ -3,12 +3,10 @@
 MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source ${MY_DIR}/scripts.conf
 
-mkdir -p ${SHILA_ROOT}/code
-
 # Aliases for global Drush
 sudo mkdir -p /etc/drush
 sudo cp ${D8_DIR}/drush/site-aliases/* /etc/drush
-sudo cp ${D7_DIR}/drush/site-aliases/* /etc/drush
+sudo cp ${D7_DIR}/drush/site-aliases/* /etc/drush 2>/dev/null
 
 ##
 # Drupal 8
