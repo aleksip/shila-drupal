@@ -1,4 +1,11 @@
 .DS_Store
 .idea
 d7/drupal-7
+d8/drush/contrib
+d8/vendor
+d8/web/core
+d8/web/modules/contrib
+d8/web/themes/contrib
+d8/web/profiles/contrib
+d8/web/sites/default/files
 d8/web/sites/shila.dev
