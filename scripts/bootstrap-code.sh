@@ -18,12 +18,24 @@ sudo cp ${D8_DIR}/drush/site-aliases/* /etc/drush
 cd ${D8_DIR}
 composer install
 
-# Install sites
+# Copy default sites.php if it does not exist
+if [ ! -f ${D8_SITES_DIR}/sites.php ]; then
+  cp ${D8_SCRIPTS_DIR}/sites.php ${D8_SITES_DIR}
+fi
+
+# Check out or update sites
 cd ${D8_SITES_DIR}
 (cd shila.dev && git pull) || git clone https://github.com/aleksip/shila-drupal-site shila.dev
+
+# Check out or update themes
 mkdir -p ${D8_SITES_DIR}/shila.dev/themes
 cd ${D8_SITES_DIR}/shila.dev/themes
 (cd shila_theme && git pull) || git clone https://github.com/aleksip/shila-drupal-theme shila_theme
+
+# Check out or update configuration
+mkdir -p ${D8_CONFIG_DIR}/shila
+cd ${D8_CONFIG_DIR}
+(cd shila && git pull) || git clone https://github.com/aleksip/shila-drupal-site-config shila
 
 
 ################################################################################
