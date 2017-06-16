@@ -25,17 +25,38 @@ fi
 
 # Check out or update sites
 cd ${D8_SITES_DIR}
-(cd shila.dev && git pull) || git clone https://github.com/aleksip/shila-drupal-site shila.dev
+if [ -d shila.dev ]; then
+  cd shila.dev
+  git pull
+else
+  git clone https://github.com/aleksip/shila-drupal-site shila.dev
+  cd shila.dev
+fi
 
 # Check out or update themes
 mkdir -p ${D8_SITES_DIR}/shila.dev/themes
 cd ${D8_SITES_DIR}/shila.dev/themes
-(cd shila_theme && git pull) || git clone https://github.com/aleksip/shila-drupal-theme shila_theme
+if [ -d shila_theme ]; then
+  cd shila_theme
+  git pull
+else
+  git clone https://github.com/aleksip/shila-drupal-theme shila_theme
+  cd shila_theme
+fi
+
+# Set up Shila theme
+npm install
+npm run install-pattern-lab
 
 # Check out or update configuration
 mkdir -p ${D8_CONFIG_DIR}/shila
 cd ${D8_CONFIG_DIR}
-(cd shila && git pull) || git clone https://github.com/aleksip/shila-drupal-site-config shila
+if [ -d shila ]; then
+  cd shila
+  git pull
+else
+  git clone https://github.com/aleksip/shila-drupal-site-config shila
+fi
 
 
 ################################################################################
