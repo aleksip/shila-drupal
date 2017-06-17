@@ -16,6 +16,7 @@ do
 	  ;;
   esac
 done
+
 # Ask for confirmation if necessary
 if [[ ! "${yes_to_all}" ]]
 then
@@ -24,16 +25,19 @@ then
   read -n 1 answer
   echo
 fi
+
 if [[ "${answer}" == "y" || "${yes_to_all}" ]]
 then
-  # Create new database (install Drupal)
-  # Comment following lines once you have a database dump
+  # Create databases if necessary and grant privileges
   mysql -u root < ${SCRIPTS_DIR}/db-create.sql
+
+  # Install Drupal
+  # Comment the following lines once you have a database dump
   drush @local.d8.shila si standard --account-pass='shila' --site-name='Shila Drupal' -y
   drush @local.d8.shila en components,shila_theme -y
   drush @local.d8.shila cset system.theme default shila_theme -y
 
-  # Uncomment following line once you have a database dump
+  # Uncomment the following line once you have a database dump
   #mysql -u shila -pshila shila_dev_d8 < ${SQL_DUMPS_DIR}/shila_dev_d8.sql
 else
   echo "Cancelling..."
