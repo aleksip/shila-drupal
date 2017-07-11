@@ -18,6 +18,10 @@ sudo cp ${D8_DIR}/drush/site-aliases/* /etc/drush
 cd ${D8_DIR}/drupal-8
 composer install
 
+# Check out overwritten files
+git checkout -- web/sites/development.services.yml
+git checkout -- web/sites/sites.php
+
 # Check out or update sites
 cd ${D8_SITES_DIR}
 if [ -d www.shila.dev ]; then
