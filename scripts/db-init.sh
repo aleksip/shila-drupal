@@ -33,7 +33,7 @@ then
 
   # Install Drupal
   # Comment the following lines once you have a database dump
-  drush @local.d8.shila si standard --account-pass='shila' --site-name='Shila Drupal' -y
+  sudo -u www-data drush @local.d8.shila si standard --account-pass='shila' --site-name='Shila Drupal' -y
   drush @local.d8.shila en components,shila_theme -y
   drush @local.d8.shila cset system.theme default shila_theme -y
 

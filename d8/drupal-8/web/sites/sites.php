@@ -53,4 +53,4 @@
  * @see \Drupal\Core\DrupalKernel::getSitePath()
  * @see https://www.drupal.org/documentation/install/multi-site
  */
-$sites['www.shila.dev'] = 'shila.dev';
+$sites['www.shila.dev'] = 'www.shila.dev';

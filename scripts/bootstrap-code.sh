@@ -15,27 +15,21 @@ sudo mkdir -p /etc/drush
 sudo cp ${D8_DIR}/drush/site-aliases/* /etc/drush
 
 # Install core and contrib
-cd ${D8_DIR}
+cd ${D8_DIR}/drupal-8
 composer install
-
-# Copy default sites.php if it does not exist
-if [ ! -f ${D8_SITES_DIR}/sites.php ]; then
-  cp ${D8_SCRIPTS_DIR}/sites.php ${D8_SITES_DIR}
-fi
 
 # Check out or update sites
 cd ${D8_SITES_DIR}
-if [ -d shila.dev ]; then
-  cd shila.dev
+if [ -d www.shila.dev ]; then
+  cd www.shila.dev
   git pull
 else
-  git clone https://github.com/aleksip/shila-drupal-site shila.dev
-  cd shila.dev
+  git clone https://github.com/aleksip/shila-drupal-site www.shila.dev
 fi
 
 # Check out or update themes
-mkdir -p ${D8_SITES_DIR}/shila.dev/themes
-cd ${D8_SITES_DIR}/shila.dev/themes
+mkdir -p ${D8_SITES_DIR}/www.shila.dev/themes
+cd ${D8_SITES_DIR}/www.shila.dev/themes
 if [ -d shila_theme ]; then
   cd shila_theme
   git pull
@@ -49,13 +43,12 @@ npm install
 npm run install-pattern-lab
 
 # Check out or update configuration
-mkdir -p ${D8_CONFIG_DIR}/shila
 cd ${D8_CONFIG_DIR}
-if [ -d shila ]; then
-  cd shila
+if [ -d www.shila.dev ]; then
+  cd www.shila.dev
   git pull
 else
-  git clone https://github.com/aleksip/shila-drupal-site-config shila
+  git clone https://github.com/aleksip/shila-drupal-site-config www.shila.dev
 fi
 
 
