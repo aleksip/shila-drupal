@@ -51,7 +51,7 @@ checkout_site_theme_config() {
       git clone ${4} ${3}
       cd ${3}
   fi
-  if [ ! -d ./node_modules ] && [ -f ./package.json ]
+  if [ -f package.json ] && [ ! -d node_modules ]
     then
       echo "Running npm install in theme directory..."
       npm install
