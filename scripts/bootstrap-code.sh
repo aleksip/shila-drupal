@@ -22,38 +22,58 @@ composer install
 git checkout -- web/sites/development.services.yml
 git checkout -- web/sites/sites.php
 
-# Check out or update sites
-cd ${D8_SITES_DIR}
-if [ -d www.shila.dev ]; then
-  cd www.shila.dev
-  git pull
-else
-  git clone https://github.com/aleksip/shila-drupal-site www.shila.dev
-fi
+# Check out or update sites, themes and configuration
+# ${1} Site directory name
+# ${2} Site repo URL
+# ${3} Theme directory name
+# ${4} Theme repo URL
+# ${5} Config repo URL
+checkout_site_theme_config() {
+  # Site
+  echo "Setting up site ${1}..."
+  cd ${D8_SITES_DIR}
+  if [ -d ${1} ]
+    then
+      cd ${1}
+      git pull
+    else
+      git clone ${2} ${1}
+  fi
+  # Theme
+  echo "Setting up theme ${3}..."
+  mkdir -p ${D8_SITES_DIR}/${1}/themes
+  cd ${D8_SITES_DIR}/${1}/themes
+  if [ -d ${3} ]
+    then
+      cd ${3}
+      git pull
+    else
+      git clone ${4} ${3}
+      cd ${3}
+  fi
+  if [ ! -d ./node_modules ] && [ -f ./package.json ]
+    then
+      echo "Running npm install in theme directory..."
+      npm install
+  fi
+  # Configuration
+  echo "Setting up configuration for ${1}..."
+  cd ${D8_CONFIG_DIR}
+  if [ -d ${1} ]
+    then
+      cd ${1}
+      git pull
+    else
+      git clone ${5} ${1}
+  fi
+}
 
-# Check out or update themes
-mkdir -p ${D8_SITES_DIR}/www.shila.dev/themes
-cd ${D8_SITES_DIR}/www.shila.dev/themes
-if [ -d shila_theme ]; then
-  cd shila_theme
-  git pull
-else
-  git clone https://github.com/aleksip/shila-drupal-theme shila_theme
-  cd shila_theme
-fi
-
-# Set up Shila theme
-npm install
-npm run install-pattern-lab
-
-# Check out or update configuration
-cd ${D8_CONFIG_DIR}
-if [ -d www.shila.dev ]; then
-  cd www.shila.dev
-  git pull
-else
-  git clone https://github.com/aleksip/shila-drupal-site-config www.shila.dev
-fi
+checkout_site_theme_config \
+  www.shila.dev \
+  https://github.com/aleksip/shila-drupal-site \
+  shila_theme \
+  https://github.com/aleksip/shila-drupal-theme \
+  https://github.com/aleksip/shila-drupal-site-config
 
 
 ################################################################################
