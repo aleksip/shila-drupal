@@ -29,7 +29,7 @@ fi
 if [[ "${answer}" == "y" || "${yes_to_all}" ]]
 then
   # Create databases if necessary and grant privileges
-  mysql -u root < ${SCRIPTS_DIR}/db-create.sql
+  mysql -u root -pshila < ${SCRIPTS_DIR}/db-create.sql
 
   # Install Drupal
   # Comment the following lines once you have a database dump
