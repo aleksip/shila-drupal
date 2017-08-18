@@ -30,6 +30,10 @@
         "drupal/features": "~3.5",
         "drupal/ui_patterns": "~1.0",
 
+        "drupal/migrate_plus": "4.0-beta1",
+        "drupal/migrate_tools": "4.0-beta1",
+        "drupal/migrate_upgrade": "3.0-rc1",
+
         "aleksip/shila_core": "dev-master",
         "aleksip/shila_image_styles": "dev-master",
         "aleksip/shila_media": "dev-master",
