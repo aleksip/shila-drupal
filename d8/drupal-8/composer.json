@@ -28,6 +28,7 @@
         "drupal/coffee": "~1.0",
         "drupal/components": "~1.0",
         "drupal/features": "~3.5",
+        "drupal/menu_block": "~1.4",
         "drupal/ui_patterns": "~1.0",
 
         "drupal/migrate_plus": "4.0-beta1",
