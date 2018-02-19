@@ -69,7 +69,7 @@ checkout_site_theme_config() {
 }
 
 checkout_site_theme_config \
-  www.shila.dev \
+  www.shila.test \
   https://github.com/aleksip/shila-drupal-site \
   shila_theme \
   https://github.com/aleksip/shila-drupal-theme \

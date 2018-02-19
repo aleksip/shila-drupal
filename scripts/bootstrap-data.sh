@@ -14,7 +14,7 @@ link_site_files_dir() {
   fi
 }
 
-link_site_files_dir www.shila.dev
+link_site_files_dir www.shila.test
 
 # Set up databases and load data from dump files
 ${SCRIPTS_DIR}/db-init.sh -y

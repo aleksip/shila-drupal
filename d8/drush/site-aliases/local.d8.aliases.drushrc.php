@@ -6,7 +6,7 @@
  */
 
 $sites = [
-  'shila' => 'www.shila.dev',
+  'shila' => 'www.shila.test',
 ];
 
 foreach ($sites as $alias => $uri) {
