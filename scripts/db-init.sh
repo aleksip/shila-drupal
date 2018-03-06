@@ -36,6 +36,8 @@ then
   sudo -u www-data drush @local.d8.shila si standard --account-pass='shila' --site-name='Shila Drupal' -y
   drush @local.d8.shila en coffee,components,shila_theme -y
   drush @local.d8.shila cset system.theme default shila_theme -y
+  drush @local.d8.shila en features,features_ui -y
+  sudo -u www-data drush @local.d8.shila en shila_demo -y
 
   # Uncomment the following line once you have a database dump
   #mysql -u shila -pshila shila_dev_d8 < ${SQL_DUMPS_DIR}/shila_dev_d8.sql
