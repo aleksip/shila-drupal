@@ -1,4 +1,7 @@
 /.idea/
 /d6/drupal-6/
 /d7/drupal-7/
-/d8/drupal-8/web/sites/www.shila.test/
+/d8/codebases/*
+!/d8/codebases/.gitkeep
+/d8/multisites/*
+!/d8/multisites/.gitkeep
