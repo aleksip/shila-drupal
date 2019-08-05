@@ -13,4 +13,4 @@ SHILA_ROOT
     └── sql-dumps
 ```
 
-See [Shila Vagrant](https://github.com/aleksip/shila-vagrant) for a working setup in a Vagrant box.
+See [Shila server](https://github.com/aleksip/shila-server) for a working setup in an Ubuntu 18.04 based environment.

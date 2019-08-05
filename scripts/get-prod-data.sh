@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source ${MY_DIR}/scripts.conf
+# shellcheck source=scripts-conf.sh
+source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/scripts-conf.sh"
 
-mkdir -p ${DATA_DIR}
+mkdir -p "${DATA_DIR}"
 
-echo "running remote db-dump"
+echo "Running remote db-dump..."
 ssh user@example.com '${REMOTE_SHILA_ROOT}/code/shila-drupal/scripts/db-dump.sh'
 
-echo "running rsync"
-rsync -avz -e ssh user@example.com:${REMOTE_SHILA_ROOT}/data/ ${DATA_DIR}
+echo "Running rsync..."
+rsync -avz -e ssh "user@example.com:${REMOTE_SHILA_ROOT}/data/" "${DATA_DIR}"
