@@ -34,7 +34,6 @@ if [[ "${answer}" == "y" || "${yes_to_all}" ]]
       then
         # Install Drupal.
         echo "Installing Drupal..."
-        cp "${SCRIPTS_DIR}/db.env" "${D8_CODEBASES_DIR}/www.shila.test/.env"
         cd "${D8_CODEBASES_DIR}/www.shila.test" || exit 1
         sudo -u www-data drush si --account-pass="shila" --site-name="Shila Drupal" -y standard
         drush en admin_toolbar,coffee,components -y
