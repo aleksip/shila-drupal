@@ -38,8 +38,6 @@ if [[ "${answer}" == "y" || "${yes_to_all}" ]]
         sudo -u www-data drush si --account-pass="shila" --site-name="Shila Drupal" -y standard
         drush en admin_toolbar,coffee,components -y
         drush theme:enable shila_theme -y && drush cset system.theme default shila_theme -y
-        drush en features,features_ui -y
-        sudo -u www-data drush en shila_core,shila_image_styles,shila_media -y
         if [ ! -e web/sites/www.shila.test/settings.local.php ]
           then
             ln -s ../../../settings.local.php web/sites/www.shila.test/settings.local.php
