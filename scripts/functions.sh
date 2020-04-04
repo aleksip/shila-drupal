@@ -39,12 +39,15 @@ shila_checkout_site ()
 {
   # Clone or update site from repo.
   shila_setup_repo "${1}" "${2}" "${3}"
-  # Run Composer install.
-  echo "Running Composer install..."
-  composer install
-  # Check out possibly overwritten files.
-  git checkout -- web/sites/development.services.yml
-  git checkout -- web/sites/sites.php
+  # Run Composer install if the site contains a composer.json file.
+  if [ -f composer.json ]
+    then
+      echo "Running Composer install in site directory..."
+      composer install
+      # Check out possibly overwritten files.
+      git checkout -- web/sites/development.services.yml
+      git checkout -- web/sites/sites.php
+  fi
   if [ -n "${4}" ]
     then
       # Clone or update theme from repo.
